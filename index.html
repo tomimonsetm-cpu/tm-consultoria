@@ -12,26 +12,20 @@
 </head>
 <body>
 
-   <!-- ================= HEADER Y LOGO ================= -->
+  <!-- ================= HEADER Y LOGO ================= -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="brand-logo" aria-label="TM Consultoría Inicio">
-        <!-- Logo Compacto (Vectorizado del Manual de Marca) -->
+        <!-- Logo Compacto del Manual de Marca -->
         <svg viewBox="0 0 200 160" width="140" height="110" xmlns="http://www.w3.org/2000/svg">
-          <!-- Isotipo: Engranaje y Letras -->
           <g transform="translate(50, 10)">
-            <!-- Engranaje Verde Seco -->
             <path d="M 15 40 a 25 25 0 0 1 50 0" fill="none" stroke="#78845C" stroke-width="8" stroke-dasharray="8 6" stroke-linecap="round"/>
-            <!-- Engranaje Terracota -->
             <path d="M 65 40 a 25 25 0 0 1 -50 0" fill="none" stroke="#B5523A" stroke-width="8" stroke-dasharray="8 6" stroke-linecap="round"/>
-            <!-- Letra T -->
             <path d="M 10 20 L 55 20 L 50 15 M 55 20 L 50 25" stroke="#3A3A3A" stroke-width="4" fill="none" stroke-linejoin="round"/>
             <path d="M 25 20 L 25 65" stroke="#3A3A3A" stroke-width="4" fill="none"/>
-            <!-- Letra M -->
             <path d="M 40 35 L 40 65 M 40 35 L 50 50 L 60 35 L 60 65" stroke="#3A3A3A" stroke-width="3.5" fill="none" stroke-linejoin="round"/>
             <path d="M 20 50 L 75 50 L 70 45 M 75 50 L 70 55" stroke="#78845C" stroke-width="4" fill="none" stroke-linejoin="round"/>
           </g>
-          <!-- Texto Centrado Debajo -->
           <g transform="translate(100, 105)" font-family="Montserrat, sans-serif" fill="#3A3A3A" text-anchor="middle">
             <text x="0" y="0" font-size="34" font-weight="800" letter-spacing="1">TM</text>
             <text x="0" y="20" font-size="14" font-weight="700">CONSULTORÍA</text>
@@ -40,7 +34,12 @@
           </g>
         </svg>
       </a>
-      <nav class="main-nav">
+      
+      <button class="menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#3A3A3A"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+      </button>
+
+      <nav class="main-nav" id="main-navigation">
         <ul>
           <li><a href="#stack">Herramientas</a></li>
           <li><a href="#casos">Casos de Éxito</a></li>
@@ -50,7 +49,6 @@
       </nav>
     </div>
   </header>
-
 
   <main>
     <!-- ================= HERO ================= -->
@@ -62,7 +60,8 @@
           <p class="hero-subtitle">Somos el puente entre tu negocio y la tecnología. Antes de tocar un sistema o licenciar un software, entendemos tu operación en el barro para armar circuitos que realmente funcionen.</p>
           <div class="hero-actions">
             <a href="#auditoria" class="btn btn-primary">Pedí una auditoría express (gratis)</a>
-            <a href="https://wa.me/5491173636508" target="_blank" class="btn btn-secondary">Hablar por WhatsApp</a>
+            <!-- Enlace al WhatsApp configurado -->
+            <a href="https://wa.me/5491173636508" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Hablar por WhatsApp</a>
           </div>
         </div>
       </div>
@@ -125,13 +124,14 @@
           <h2>Casos de Éxito Reales</h2>
         </div>
         <div class="cards-grid cols-2 fade-in">
+          <!-- CASO 1: Ajustado sin prometer cifras de horas o porcentaje de dinero -->
           <article class="card case-card">
             <span class="badge">Agro / Servicios Logísticos</span>
             <h3>Trazabilidad de gastos en Picado de Cereales</h3>
-            <p class="case-desc"><strong>El problema:</strong> Datos dispersos y nula visibilidad de los recursos consumidos (combustible, insumos) por las cuadrillas en el campo.<br><strong>La solución:</strong> Automatización integral usando Google Sheets y Forms diseñada para que los operarios carguen datos rápido desde el celular.</p>
+            <p class="case-desc"><strong>El problema:</strong> Datos dispersos y nula visibilidad de los recursos consumidos (combustible, insumos) por las cuadrillas en el campo. Confianza a ciegas en los números finales.<br><strong>La solución:</strong> Automatización integral usando Google Sheets y Forms diseñada para que los operarios carguen datos rápido desde el celular.</p>
             <div class="case-result">
-              <div class="metric"><strong>100%</strong><span>Trazabilidad lograda</span></div>
-              <div class="metric"><strong>+Orden</strong><span>Presupuestos medibles</span></div>
+              <div class="metric"><strong>Visibilidad</strong><span>Trazabilidad de Costos</span></div>
+              <div class="metric"><strong>Gestión</strong><span>Presupuestos Precisos</span></div>
             </div>
           </article>
           
@@ -140,8 +140,8 @@
             <h3>Implementación escalable: María Brewing y Club</h3>
             <p class="case-desc"><strong>El problema:</strong> Gestión de mesas, cobros e inventarios lentos que generaban un cuello de botella en pleno servicio.<br><strong>La solución:</strong> Parametrización, carga de datos y capacitación en el local. Adaptamos sistemas precisos a medida que el cliente sumaba nuevos espacios (Vinoteca y Club).</p>
             <div class="case-result">
-              <div class="metric"><strong>3</strong><span>Locales ordenados</span></div>
-              <div class="metric"><strong>Ágil</strong><span>Gestión de mesas</span></div>
+              <div class="metric"><strong>3</strong><span>Locales Ordenados</span></div>
+              <div class="metric"><strong>Agilidad</strong><span>Gestión de Cuentas</span></div>
             </div>
           </article>
         </div>
@@ -152,14 +152,14 @@
     <section id="quien-soy" class="section-padding bg-alt">
       <div class="container profile-grid">
         <div class="profile-img fade-in">
-          <!-- TODO: Reemplazar "foto-tomas.jpg" por el nombre real de tu foto -->
           <img src="foto-tomas.jpg" alt="Tomás Monserrat - Consultor Senior" style="width: 100%; border-radius: 12px; border: 2px solid #E4DEC9;">
         </div>
         <div class="profile-text fade-in">
           <span class="eyebrow">Quién está detrás</span>
           <h2>Tomás Monserrat</h2>
-          <p>Soy consultor senior de procesos, ERP/WMS y automatización. Tengo más de 8 años metido en el barro operativo, implementando y rescatando sistemas para empresas.</p>
+          <p>Soy consultor senior de procesos, ERP/WMS y automatización. Tengo más de 9 años metido en el barro operativo, implementando y rescatando sistemas para empresas.</p>
           <p>No te vendo un software enlatado: entiendo cómo trabaja tu equipo en la vida real para diseñar un circuito que no se rompa. Porque <strong>ningún sistema resuelve un proceso que no se entiende primero en el piso de trabajo.</strong></p>
+          <a href="https://www.linkedin.com/in/tomas-monserrat-b14894125" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="margin-top: 1rem;">Conectar en LinkedIn</a>
         </div>
       </div>
     </section>
@@ -172,26 +172,26 @@
           <h2>Pedí una Auditoría Express (Gratis)</h2>
           <p>Antes de hablar de presupuestos o licencias, tengamos una charla de diagnóstico de 30 minutos. Contame qué proceso te está frenando hoy y vemos cómo ordenarlo.</p>
           <div class="contact-direct">
+            <!-- Datos precisos de contacto -->
             <p><strong>Email:</strong> <a href="mailto:tomimonse.tm@gmail.com">tomimonse.tm@gmail.com</a></p>
-            <p><strong>Teléfono:</strong> <a href="https://wa.me/5491173636508" target="_blank">+54 9 11 7363-6508</a></p>
+            <p><strong>Teléfono:</strong> <a href="https://wa.me/5491173636508" target="_blank" rel="noopener noreferrer">+54 9 11 7363-6508</a></p>
           </div>
         </div>
         <div class="audit-form-container">
-          <!-- TODO: En el 'action', pondremos el link de Formspree cuando te crees la cuenta. Por ahora enviará un correo directamente. -->
-          <form action="mailto:tomimonse.tm@gmail.com" method="POST" enctype="text/plain" class="contact-form">
+          <form id="contactForm" class="contact-form">
             <div class="form-group">
               <label for="nombre">Nombre y Apellido</label>
-              <input type="text" id="nombre" name="Nombre" required>
+              <input type="text" id="nombre" name="Nombre" required placeholder="Ej. Martín Gómez">
             </div>
             <div class="form-group">
               <label for="empresa">Empresa / Rubro</label>
-              <input type="text" id="empresa" name="Empresa" required>
+              <input type="text" id="empresa" name="Empresa" required placeholder="Nombre de tu empresa">
             </div>
             <div class="form-group">
               <label for="mensaje">¿Cuál es tu principal dolor operativo hoy?</label>
-              <textarea id="mensaje" name="Mensaje" rows="4" required></textarea>
+              <textarea id="mensaje" name="Mensaje" rows="4" required placeholder="Contame qué proceso necesitas ordenar..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-full">Solicitar Auditoría por Email</button>
+            <button type="submit" class="btn btn-primary btn-full">Enviar solicitud vía WhatsApp</button>
           </form>
         </div>
       </div>
@@ -202,21 +202,32 @@
   <footer class="site-footer">
     <div class="container footer-flex">
       <div class="footer-brand">
-        <h3 style="color: #F7F4EC; font-family: 'Montserrat', sans-serif;">TM Consultoría</h3>
+        <h3 style="color: #F4EFE6; font-family: 'Montserrat', sans-serif;">TM Consultoría</h3>
         <p>Procesos documentados. Sistemas funcionales.</p>
       </div>
       <div class="footer-contact">
         <p>📍 Buenos Aires, Argentina</p>
         <p>✉ <a href="mailto:tomimonse.tm@gmail.com">tomimonse.tm@gmail.com</a></p>
-        <p>✆ <a href="https://wa.me/5491173636508" target="_blank">11 7363-6508</a></p>
+        <p>✆ <a href="https://wa.me/5491173636508" target="_blank" rel="noopener noreferrer">11 7363-6508</a></p>
+        <p>in <a href="https://www.linkedin.com/in/tomas-monserrat-b14894125" target="_blank" rel="noopener noreferrer">Tomás Monserrat</a></p>
       </div>
     </div>
   </footer>
 
   <!-- ================= SCRIPTS ================= -->
   <script>
-    // Microinteracción para que los elementos aparezcan suavemente al hacer scroll
     document.addEventListener("DOMContentLoaded", () => {
+      // 1. Menú Móvil
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const nav = document.getElementById('main-navigation');
+      menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
+      });
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => nav.classList.remove('active'));
+      });
+
+      // 2. Animaciones al scrollear
       const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
@@ -226,8 +237,24 @@
           }
         });
       }, observerOptions);
-
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      // 3. Envío de Formulario directo a WhatsApp (sin servidores ni configuraciones extra)
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const nombre = document.getElementById('nombre').value;
+        const empresa = document.getElementById('empresa').value;
+        const mensaje = document.getElementById('mensaje').value;
+        
+        // Número de Tomás
+        const numero = "5491173636508";
+        const texto = `Hola Tomás, soy ${nombre} de ${empresa}. Quisiera consultar por una auditoría express. Te comento nuestro problema:\n\n"${mensaje}"`;
+        const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+        
+        window.open(url, '_blank');
+        form.reset();
+      });
     });
   </script>
 </body>
