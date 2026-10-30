@@ -6,27 +6,205 @@
   <title>TM Consultoría de Procesos y Automatización | Orden Operativo y Sistemas</title>
   <meta name="description" content="Ordenamos tu negocio y automatizamos tu trabajo manual con herramientas accesibles (Google Sheets, Forms, Colab, Python y ERP/WMS). Consultoría de procesos en Argentina.">
   
-  <!-- Open Graph para compartir en WhatsApp y LinkedIn -->
   <meta property="og:title" content="TM Consultoría de Procesos y Automatización">
   <meta property="og:description" content="Antes de elegir un sistema, hay que entender cómo funciona tu negocio. Ordenamos tus procesos y eliminamos el trabajo manual.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_AR">
 
-  <!-- Favicon en SVG con el Isotipo Oficial -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='24' fill='%23E9E3D6'/%3E%3Ccircle cx='60' cy='60' r='38' fill='none' stroke='%2378845C' stroke-width='10'/%3E%3Cpath d='M87 33 A38 38 0 0 1 33 87' fill='none' stroke='%23B5523A' stroke-width='10'/%3E%3Ctext x='60' y='73' text-anchor='middle' font-family='Montserrat, sans-serif' font-weight='800' font-size='38' fill='%233A3A3A'%3ETM%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    :root {
+      --c-beige: #E9E3D6;
+      --c-arena: #F4EFE6;
+      --c-borde: #D6CEBE;
+      --c-gris: #3A3A3A;
+      --c-texto: #4F524D;
+      --c-verde: #78845C;
+      --c-verde-dark: #5E6847;
+      --c-terracota: #B5523A;
+      --c-terracota-dark: #94402B;
+      --c-blanco: #FFFFFF;
+      --f-title: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --f-body: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius: 14px;
+      --shadow-sm: 0 6px 18px rgba(58, 58, 58, 0.06);
+      --shadow-md: 0 14px 32px rgba(58, 58, 58, 0.11);
+      --transition: all 0.28s ease;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--f-body); color: var(--c-gris); background-color: var(--c-beige); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    img, svg { max-width: 100%; height: auto; display: block; }
+
+    .container { width: 90%; max-width: 1160px; margin: 0 auto; }
+    .section-padding { padding: 5.5rem 0; }
+    .bg-alt { background-color: var(--c-arena); border-top: 1px solid var(--c-borde); border-bottom: 1px solid var(--c-borde); }
+    .section-header { max-width: 740px; margin-bottom: 3.25rem; }
+    .section-header.text-center { margin-left: auto; margin-right: auto; text-align: center; }
+
+    h1, h2, h3, h4 { font-family: var(--f-title); color: var(--c-gris); line-height: 1.22; }
+    h1 { font-size: clamp(2rem, 3.6vw, 2.85rem); font-weight: 800; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(1.65rem, 2.8vw, 2.25rem); font-weight: 800; margin-bottom: 0.9rem; }
+    h3 { font-size: 1.22rem; font-weight: 700; margin-bottom: 0.65rem; }
+    p { color: var(--c-texto); margin-bottom: 1rem; }
+
+    .eyebrow {
+      display: inline-block; font-family: var(--f-title); font-size: 0.8rem; font-weight: 700;
+      color: var(--c-verde-dark); background-color: rgba(120, 132, 92, 0.15);
+      padding: 0.35rem 0.85rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; padding: 0.95rem 1.75rem;
+      font-family: var(--f-title); font-weight: 700; font-size: 0.95rem; border-radius: 10px;
+      cursor: pointer; border: 2px solid transparent; text-align: center; transition: var(--transition);
+    }
+    .btn-primary { background-color: var(--c-terracota); color: var(--c-blanco); }
+    .btn-primary:hover { background-color: var(--c-terracota-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(181, 82, 58, 0.28); }
+    .btn-secondary { border-color: var(--c-gris); color: var(--c-gris); background-color: transparent; }
+    .btn-secondary:hover { background-color: var(--c-gris); color: var(--c-arena); transform: translateY(-2px); }
+    .btn-sm { padding: 0.65rem 1.25rem; font-size: 0.88rem; }
+    .btn-full { width: 100%; }
+
+    .site-header { background-color: rgba(233, 227, 214, 0.94); border-bottom: 1px solid var(--c-borde); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; min-height: 92px; padding: 0.4rem 0; position: relative; }
+    .brand-logo svg { height: 68px; width: auto; }
+    .main-nav ul { display: flex; gap: 1.6rem; list-style: none; align-items: center; }
+    .main-nav a:not(.btn) { font-weight: 600; font-family: var(--f-title); font-size: 0.92rem; color: var(--c-gris); }
+    .main-nav a:not(.btn):hover { color: var(--c-terracota); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3.5rem; align-items: center; }
+    .hero-subtitle { font-size: 1.12rem; color: var(--c-gris); margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 1.25rem; font-size: 0.88rem; font-weight: 500; color: var(--c-verde-dark); padding-top: 1.25rem; border-top: 1px solid var(--c-borde); }
+
+    .hero-card { background-color: var(--c-arena); border: 1px solid var(--c-borde); border-radius: var(--radius); padding: 2.2rem; box-shadow: var(--shadow-md); }
+    .hero-card-header { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.25rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--c-borde); }
+    .hero-card-header strong { display: block; font-family: var(--f-title); font-size: 1.05rem; color: var(--c-gris); }
+    .hero-card-header span { font-size: 0.85rem; color: var(--c-texto); }
+    .hero-steps { display: flex; flex-direction: column; gap: 1.25rem; }
+    .hero-step-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .step-badge { flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px; background-color: var(--c-verde); color: var(--c-blanco); font-family: var(--f-title); font-weight: 800; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }
+    .step-badge.step-terracotta { background-color: var(--c-terracota); }
+    .hero-step-item h4 { font-size: 1rem; margin-bottom: 0.25rem; }
+    .hero-step-item p { font-size: 0.88rem; margin-bottom: 0; }
+
+    .cards-grid { display: grid; gap: 1.75rem; }
+    .cols-2 { grid-template-columns: repeat(2, 1fr); }
+    .cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card { background-color: var(--c-arena); padding: 2.25rem; border-radius: var(--radius); border: 1px solid var(--c-borde); box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; }
+    .bg-alt .card { background-color: var(--c-beige); }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--c-verde); }
+
+    .problem-num { font-family: var(--f-title); font-size: 1.6rem; font-weight: 800; color: var(--c-terracota); margin-bottom: 0.75rem; line-height: 1; }
+    .problem-card p { margin-bottom: 0; font-size: 0.94rem; }
+
+    .service-tag { align-self: flex-start; font-family: var(--f-title); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c-verde-dark); background-color: rgba(120, 132, 92, 0.16); padding: 0.3rem 0.75rem; border-radius: 6px; margin-bottom: 1rem; }
+    .service-tag-terracotta { color: var(--c-terracota-dark); background-color: rgba(181, 82, 58, 0.15); }
+    .service-box p { margin-bottom: 0; }
+
+    .stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .stack-card { background-color: var(--c-blanco); border: 1px solid var(--c-borde); border-radius: var(--radius); padding: 2.25rem 1.5rem; text-align: center; transition: var(--transition); box-shadow: var(--shadow-sm); }
+    .stack-card:hover { transform: translateY(-5px); border-color: var(--c-verde); box-shadow: var(--shadow-md); }
+    .stack-icon { width: 68px; height: 68px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; border-radius: 16px; }
+    .icon-sheets { background-color: rgba(120, 132, 92, 0.16); color: var(--c-verde-dark); }
+    .icon-forms  { background-color: rgba(58, 58, 58, 0.1); color: var(--c-gris); }
+    .icon-colab  { background-color: rgba(181, 82, 58, 0.15); color: var(--c-terracota); }
+    .icon-python { background-color: rgba(120, 132, 92, 0.16); color: var(--c-gris); }
+    .stack-card p { font-size: 0.92rem; margin-bottom: 0; }
+
+    .integrations-banner { margin-top: 2.5rem; padding: 1.5rem 2rem; background-color: var(--c-beige); border: 1px solid var(--c-borde); border-radius: var(--radius); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .integrations-label { font-family: var(--f-title); font-weight: 700; font-size: 0.92rem; color: var(--c-gris); }
+    .integrations-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .integrations-pills span { background-color: var(--c-arena); border: 1px solid var(--c-borde); padding: 0.4rem 0.9rem; border-radius: 50px; font-family: var(--f-title); font-size: 0.82rem; font-weight: 600; color: var(--c-gris); }
+
+    .badge { align-self: flex-start; background-color: var(--c-verde); color: var(--c-blanco); font-family: var(--f-title); font-size: 0.74rem; font-weight: 700; padding: 0.35rem 0.8rem; border-radius: 6px; margin-bottom: 1.1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .badge-terracotta { background-color: var(--c-terracota); }
+    .case-body p { font-size: 0.93rem; }
+    .case-result { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: auto; padding-top: 1.25rem; border-top: 1px solid var(--c-borde); }
+    .metric strong { display: block; font-family: var(--f-title); font-size: 1.15rem; color: var(--c-terracota); font-weight: 800; margin-bottom: 0.15rem; }
+    .metric span { font-size: 0.8rem; color: var(--c-texto); line-height: 1.3; display: block; }
+
+    .profile-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 3.5rem; align-items: center; }
+    .profile-frame img { width: 100%; border-radius: var(--radius); border: 2px solid var(--c-borde); box-shadow: var(--shadow-md); object-fit: cover; }
+    .profile-fallback { background-color: var(--c-beige); border: 2px solid var(--c-borde); border-radius: var(--radius); padding: 3.5rem 2rem; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 0.75rem; }
+    .lead-text { font-size: 1.1rem; font-weight: 500; color: var(--c-gris); }
+    .brand-quote { background-color: var(--c-beige); border-left: 4px solid var(--c-terracota); padding: 1.1rem 1.4rem; border-radius: 0 10px 10px 0; font-style: italic; color: var(--c-gris); font-weight: 500; margin: 1.5rem 0; }
+
+    .faq-container { margin-top: 4rem; padding-top: 3.5rem; border-top: 1px solid var(--c-borde); }
+    .faq-container h3 { margin-bottom: 2rem; text-align: center; }
+    .faq-item { background-color: var(--c-beige); border: 1px solid var(--c-borde); border-radius: var(--radius); padding: 1.75rem; }
+    .faq-item h4 { color: var(--c-terracota); font-size: 1rem; margin-bottom: 0.65rem; }
+    .faq-item p { font-size: 0.92rem; margin-bottom: 0; }
+
+    .audit-wrapper { display: grid; grid-template-columns: 1fr 1.05fr; gap: 3.5rem; align-items: start; }
+    .contact-cards { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .contact-item { background-color: var(--c-arena); border: 1px solid var(--c-borde); border-radius: 12px; padding: 1.15rem 1.4rem; display: flex; flex-direction: column; transition: var(--transition); }
+    .contact-item:hover { border-color: var(--c-terracota); transform: translateX(4px); }
+    .contact-badge { font-family: var(--f-title); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--c-verde-dark); }
+    .contact-item strong { font-family: var(--f-title); font-size: 1.1rem; color: var(--c-gris); margin: 0.15rem 0; }
+    .contact-item span:last-child { font-size: 0.84rem; color: var(--c-texto); }
+
+    .contact-form { background-color: var(--c-arena); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--c-borde); box-shadow: var(--shadow-md); }
+    .form-helper { font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1.35rem; }
+    label { display: block; font-family: var(--f-title); font-weight: 700; margin-bottom: 0.45rem; font-size: 0.88rem; color: var(--c-gris); }
+    input, textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--c-borde); border-radius: 8px; font-family: var(--f-body); font-size: 0.96rem; color: var(--c-gris); background-color: var(--c-blanco); transition: var(--transition); }
+    input:focus, textarea:focus { outline: none; border-color: var(--c-verde); box-shadow: 0 0 0 3px rgba(120, 132, 92, 0.22); }
+
+    .site-footer { background-color: var(--c-gris); color: var(--c-beige); padding: 4.5rem 0 2rem; }
+    .footer-flex { display: grid; grid-template-columns: 1.4fr 0.8fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(233, 227, 214, 0.15); }
+    .footer-brand p { color: #CFC8B8; margin-top: 1rem; max-width: 380px; font-size: 0.92rem; }
+    .site-footer h4 { color: var(--c-arena); font-size: 1rem; margin-bottom: 1rem; }
+    .footer-links ul { list-style: none; }
+    .footer-links li { margin-bottom: 0.55rem; }
+    .footer-links a, .footer-contact a { color: #CFC8B8; font-size: 0.92rem; }
+    .footer-links a:hover, .footer-contact a:hover { color: var(--c-blanco); }
+    .footer-contact p { color: #CFC8B8; font-size: 0.92rem; margin-bottom: 0.5rem; }
+    .footer-bottom { padding-top: 1.75rem; text-align: center; }
+    .footer-bottom p { color: #A8A296; font-size: 0.84rem; margin-bottom: 0; }
+
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 99; background-color: var(--c-verde-dark);
+      color: var(--c-blanco); padding: 0.75rem 1.25rem; border-radius: 50px; display: flex;
+      align-items: center; gap: 0.55rem; font-family: var(--f-title); font-weight: 700; font-size: 0.9rem;
+      box-shadow: 0 8px 24px rgba(58, 58, 58, 0.28);
+    }
+    .whatsapp-float:hover { background-color: var(--c-terracota); transform: translateY(-3px); }
+
+    @media (max-width: 980px) {
+      .hero-grid, .profile-grid, .audit-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cols-4, .stack-grid { grid-template-columns: repeat(2, 1fr); }
+      .cols-3 { grid-template-columns: 1fr; }
+      .footer-flex { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 780px) {
+      .section-padding { padding: 4rem 0; }
+      .menu-toggle { display: block; }
+      .main-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--c-arena); border-bottom: 1px solid var(--c-borde); padding: 1.5rem 0; box-shadow: var(--shadow-md); }
+      .main-nav.active { display: block; }
+      .main-nav ul { flex-direction: column; gap: 1.1rem; text-align: center; }
+      .cols-2, .cols-4, .stack-grid { grid-template-columns: 1fr; }
+      .integrations-banner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Definición vectorial reutilizable del Isotipo Oficial TM (12 dientes exactos del Manual de Marca) -->
+  <!-- Definición vectorial del Isotipo Oficial TM -->
   <svg width="0" height="0" style="position:absolute; visibility:hidden;" aria-hidden="true">
     <defs>
       <g id="tm-isotipo">
-        <!-- 8 Dientes Superiores-Izquierdos (Verde Seco #78845C) -->
         <g fill="#78845C">
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(0 60 60)"/>
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(30 60 60)"/>
@@ -37,26 +215,20 @@
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(300 60 60)"/>
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(330 60 60)"/>
         </g>
-        <!-- 4 Dientes Inferiores-Derechos (Terracota #B5523A) -->
         <g fill="#B5523A">
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(90 60 60)"/>
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(120 60 60)"/>
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(150 60 60)"/>
           <polygon points="53,6 67,6 70,18 50,18" transform="rotate(180 60 60)"/>
         </g>
-        <!-- Cuerpo del engranaje partido a 45 grados -->
         <path d="M 27.5 92.5 A 46 46 0 1 1 92.5 27.5 L 60 60 Z" fill="#78845C"/>
         <path d="M 92.5 27.5 A 46 46 0 0 1 27.5 92.5 L 60 60 Z" fill="#B5523A"/>
-        <!-- Centro color Arena y anillo interior -->
         <circle cx="60" cy="60" r="35.5" fill="var(--logo-bg, #E9E3D6)"/>
         <circle cx="60" cy="60" r="30.5" fill="none" stroke="#78845C" stroke-width="2.5"/>
-        <!-- Letra T con flecha hacia la derecha -->
         <path d="M 20 35 H 64" stroke="var(--logo-fg, #3A3A3A)" stroke-width="6.5" stroke-linecap="square"/>
         <polygon points="62,27 76,35 62,43" fill="var(--logo-fg, #3A3A3A)"/>
         <path d="M 42 35 V 83" stroke="var(--logo-fg, #3A3A3A)" stroke-width="6.5" stroke-linecap="square"/>
-        <!-- Letra M encastrada -->
         <path d="M 52 83 V 47 L 66 67 L 80 47 V 81" fill="none" stroke="var(--logo-fg, #3A3A3A)" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
-        <!-- Halo y Flecha quebrada de progreso en Verde Seco -->
         <path d="M 33 95 L 65 63 H 93" fill="none" stroke="var(--logo-bg, #E9E3D6)" stroke-width="10" stroke-linecap="square" stroke-linejoin="miter"/>
         <path d="M 33 95 L 65 63 H 92" fill="none" stroke="#78845C" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter"/>
         <polygon points="89,54 104,63 89,72" fill="#78845C"/>
@@ -64,11 +236,11 @@
     </defs>
   </svg>
 
-  <!-- ================= HEADER Y LOGO HORIZONTAL OFICIAL ================= -->
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#" class="brand-logo" aria-label="TM Consultoría de Procesos y Automatización - Inicio">
-        <svg viewBox="0 0 430 120" width="290" height="80" role="img" aria-label="Logo TM Consultoría de Procesos y Automatización">
+        <svg viewBox="0 0 430 120" width="290" height="80" role="img" aria-label="Logo TM Consultoría">
           <use href="#tm-isotipo" x="0" y="0"/>
           <g transform="translate(124, 18)" font-family="Montserrat, sans-serif" fill="#3A3A3A">
             <text x="0" y="34" font-size="44" font-weight="800" letter-spacing="1">TM</text>
@@ -79,11 +251,11 @@
         </svg>
       </a>
 
-      <button class="menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <button class="menu-toggle" id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false">
         <svg viewBox="0 0 24 24" width="28" height="28" fill="#3A3A3A"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
       </button>
 
-      <nav class="main-nav" id="main-navigation" aria-label="Navegación principal">
+      <nav class="main-nav" id="main-navigation">
         <ul>
           <li><a href="#problemas">Problemas</a></li>
           <li><a href="#servicios">Cómo trabajamos</a></li>
@@ -97,10 +269,10 @@
   </header>
 
   <main>
-    <!-- ================= 1. HERO ================= -->
+    <!-- 1. HERO -->
     <section class="hero section-padding">
       <div class="container hero-grid">
-        <div class="hero-content fade-in">
+        <div class="hero-content">
           <span class="eyebrow">Consultoría de Procesos · ERP / WMS · Automatización</span>
           <h1>Ordenamos tu negocio y automatizamos tu trabajo manual para que dejes de apagar incendios.</h1>
           <p class="hero-subtitle">Antes de elegir un sistema, hay que entender cómo funciona tu operación. Nos metemos en el día a día de tu empresa, armamos circuitos que no se rompan y los automatizamos con herramientas simples que tu equipo ya sabe usar.</p>
@@ -115,8 +287,7 @@
           </div>
         </div>
 
-        <!-- Tarjeta visual de Circuito de Orden Operativo -->
-        <div class="hero-card fade-in" aria-hidden="true">
+        <div class="hero-card">
           <div class="hero-card-header">
             <svg viewBox="0 0 120 120" width="48" height="48"><use href="#tm-isotipo"/></svg>
             <div>
@@ -151,34 +322,31 @@
       </div>
     </section>
 
-    <!-- ================= 2. PROBLEMAS QUE RESOLVEMOS ================= -->
+    <!-- 2. PROBLEMAS -->
     <section id="problemas" class="section-padding bg-alt">
       <div class="container">
-        <div class="section-header text-center fade-in">
+        <div class="section-header text-center">
           <span class="eyebrow">El diagnóstico habitual</span>
           <h2>¿Tu empresa creció, pero la operación sigue dependiendo de tareas a mano?</h2>
           <p>Muchos dueños y gerentes sienten que trabajan todo el día apagando incendios porque la información está dispersa y los procesos no están escritos.</p>
         </div>
 
-        <div class="cards-grid cols-4 fade-in">
+        <div class="cards-grid cols-4">
           <article class="card problem-card">
             <div class="problem-num">01</div>
             <h3>Dependencia de personas clave</h3>
             <p>Los procesos están en la cabeza de dos o tres personas. Si alguien falta o cambia de puesto, la operación se frena o aparecen errores caros.</p>
           </article>
-
           <article class="card problem-card">
             <div class="problem-num">02</div>
             <h3>Planillas sueltas y doble carga</h3>
             <p>Tu equipo pierde horas pasando datos a mano de un lado a otro, o pagás un sistema de gestión pero terminan llevando todo por afuera en Excel.</p>
           </article>
-
           <article class="card problem-card">
             <div class="problem-num">03</div>
             <h3>Cero trazabilidad de costos y stock</h3>
             <p>No sabés con exactitud cuánto consume cada equipo en el campo, qué mercadería hay realmente en el depósito o dónde se escapa la rentabilidad.</p>
           </article>
-
           <article class="card problem-card">
             <div class="problem-num">04</div>
             <h3>Números que llegan tarde</h3>
@@ -188,54 +356,50 @@
       </div>
     </section>
 
-    <!-- ================= 3. SERVICIOS Y METODOLOGÍA ================= -->
+    <!-- 3. SERVICIOS -->
     <section id="servicios" class="section-padding">
       <div class="container">
-        <div class="section-header fade-in">
+        <div class="section-header">
           <span class="eyebrow">Soluciones prácticas</span>
           <h2>Cómo ordenamos tu empresa paso a paso</h2>
           <p>No vendemos enlatados ni soluciones mágicas. Nos sentamos en tu mesa de trabajo para dejar el negocio funcionando a medida.</p>
         </div>
 
-        <div class="cards-grid cols-2 fade-in">
+        <div class="cards-grid cols-2">
           <article class="card service-box">
             <span class="service-tag">Etapa 01</span>
             <h3>Diagnóstico y Documentación de Procesos</h3>
-            <p>Relevamos cómo trabaja tu empresa hoy, detectamos dónde están los cuellos de botella y diseñamos el flujo operativo ideal. Dejamos cada circuito documentado con reglas claras para estandarizar el trabajo diario.</p>
+            <p>Relevamos cómo trabaja tu empresa hoy, detectamos dónde están los cuellos de botella y diseñamos el flujo operativo ideal. Dejamos cada circuito documentado con reglas claras.</p>
           </article>
-
           <article class="card service-box">
             <span class="service-tag">Etapa 02</span>
             <h3>Automatización sin Licencias Carísimas</h3>
-            <p>Transformamos tareas manuales repetitivas en circuitos automáticos. Construimos formularios de captura en campo o piso de venta, bases maestras y tableros de control en tiempo real listos para tomar decisiones.</p>
+            <p>Transformamos tareas manuales repetitivas en circuitos automáticos. Construimos formularios de captura en campo o piso de venta, bases maestras y tableros de control en tiempo real.</p>
           </article>
-
           <article class="card service-box">
             <span class="service-tag">Etapa 03</span>
-            <h3>Implementación de Sistemas y Gestión (ERP / WMS / POS)</h3>
-            <p>Investigamos y seleccionamos la herramienta que calza con tu operación y presupuesto. Nos encargamos de la configuración, el pasaje de datos maestros, las listas de precios y la puesta en marcha en vivo.</p>
+            <h3>Implementación de Sistemas y Gestión</h3>
+            <p>Investigamos y seleccionamos la herramienta que calza con tu operación y presupuesto. Nos encargamos de la configuración, migración de datos maestros y puesta en marcha.</p>
           </article>
-
           <article class="card service-box">
             <span class="service-tag service-tag-terracotta">Etapa 04 · Garantía TM</span>
             <h3>Capacitación Paso a Paso y Estabilización</h3>
-            <p>El proyecto no termina cuando arranca el sistema. Entrenamos a los usuarios sin tecnicismos y ofrecemos un período de estabilización post-implementación para ajustar detalles y asegurar que nadie quede atado a nosotros.</p>
+            <p>Entrenamos a los usuarios sin tecnicismos y ofrecemos un período de estabilización post-implementación para ajustar detalles y asegurar que nadie quede atado a nosotros.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ================= 4. STACK DE AUTOMATIZACIÓN ================= -->
+    <!-- 4. STACK -->
     <section id="stack" class="section-padding bg-alt">
       <div class="container">
-        <div class="section-header text-center fade-in">
+        <div class="section-header text-center">
           <span class="eyebrow">La tecnología al servicio del proceso</span>
           <h2>Nuestro Stack de Herramientas</h2>
           <p>Priorizamos herramientas potentes, flexibles y accesibles que tu equipo adopta rápido, y las combinamos con código a medida cuando el volumen de datos lo exige.</p>
         </div>
         
-        <div class="stack-grid fade-in">
-          <!-- Google Sheets -->
+        <div class="stack-grid">
           <div class="stack-card">
             <div class="stack-icon icon-sheets">
               <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 14H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
@@ -243,8 +407,6 @@
             <h3>Google Sheets</h3>
             <p>Bases de datos conectadas, automatización de cálculos de costos y tableros de control en tiempo real sin pagar licencias mensuales.</p>
           </div>
-          
-          <!-- Google Forms -->
           <div class="stack-card">
             <div class="stack-icon icon-forms">
               <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
@@ -252,8 +414,6 @@
             <h3>Google Forms</h3>
             <p>Carga de datos simple y estandarizada desde el celular para cuadrillas en el campo, choferes o personal de depósito.</p>
           </div>
-
-          <!-- Google Colab -->
           <div class="stack-card">
             <div class="stack-icon icon-colab">
               <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5 4.5 2 4.5 4.5-2 4.5-4.5 4.5zm5.5-3.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>
@@ -261,8 +421,6 @@
             <h3>Google Colab</h3>
             <p>Entornos en la nube para limpiar, cruzar y transformar grandes volúmenes de datos crudos en segundos y sin errores manuales.</p>
           </div>
-
-          <!-- Python -->
           <div class="stack-card">
             <div class="stack-icon icon-python">
               <svg viewBox="0 0 24 24" fill="currentColor" width="38" height="38"><path d="M12 2c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
@@ -272,7 +430,7 @@
           </div>
         </div>
 
-        <div class="integrations-banner fade-in">
+        <div class="integrations-banner">
           <span class="integrations-label">También trabajamos e integramos con:</span>
           <div class="integrations-pills">
             <span>SAP Business One</span>
@@ -286,86 +444,64 @@
       </div>
     </section>
 
-    <!-- ================= 5. CASOS DE ÉXITO REALES ================= -->
+    <!-- 5. CASOS DE ÉXITO -->
     <section id="casos" class="section-padding">
       <div class="container">
-        <div class="section-header fade-in">
+        <div class="section-header">
           <span class="eyebrow">Resultados comprobables en la práctica</span>
           <h2>Casos de Éxito Reales</h2>
           <p>Cada operación tiene su propia lógica. Así ayudamos a empresas de distintos rubros a ordenar su día a día.</p>
         </div>
 
-        <div class="cards-grid cols-3 fade-in">
-          <!-- CASO 1: AGRO -->
+        <div class="cards-grid cols-3">
           <article class="card case-card">
             <span class="badge">Agro · Servicios en Campo</span>
             <h3>Control de gastos y recursos en Picado de Cereales</h3>
             <div class="case-body">
-              <p><strong>Situación y Problema:</strong> Empresa de servicios de picado de cereales para alimentación animal con cuadrillas en campo. Los datos estaban dispersos y confiaban a ciegas en los números sin saber cuánto combustible, aceite o insumos consumía cada equipo.</p>
+              <p><strong>Situación y Problema:</strong> Empresa de servicios de picado de cereales para alimentación animal con cuadrillas en campo. Los datos estaban dispersos y confiaban a ciegas en los números sin saber cuánto combustible o insumos consumía cada equipo.</p>
               <p><strong>Solución:</strong> Relevamos la rutina en el campo y diseñamos un circuito de carga simple desde el celular con <strong>Google Forms</strong> conectado a una base automatizada en <strong>Google Sheets</strong>.</p>
             </div>
             <div class="case-result">
-              <div class="metric">
-                <strong>Trazabilidad</strong>
-                <span>Control real por vehículo y equipo</span>
-              </div>
-              <div class="metric">
-                <strong>Previsibilidad</strong>
-                <span>Base limpia para presupuestar</span>
-              </div>
+              <div class="metric"><strong>Trazabilidad</strong><span>Control real por vehículo y equipo</span></div>
+              <div class="metric"><strong>Previsibilidad</strong><span>Base limpia para presupuestar</span></div>
             </div>
           </article>
 
-          <!-- CASO 2: MARÍA BREWING / VINOTECA / CLUB -->
           <article class="card case-card">
             <span class="badge">Gastronomía y Retail · 3 Locales</span>
             <h3>Implementación escalable: María Brewing, María Vinoteca y María Club</h3>
             <div class="case-body">
               <p><strong>Situación y Problema:</strong> Tres negocios de un mismo propietario con operativas distintas. Empezamos en María Brewing para agilizar el control de mesas, consumos y separación de cuentas.</p>
-              <p><strong>Solución:</strong> Implementamos una herramienta accesible, migramos datos y capacitamos al equipo. El resultado llevó a que nos volvieran a llamar al abrir <strong>María Vinoteca</strong> (control de inventario) y <strong>María Club</strong> (adaptación de listas de precios y soporte continuo).</p>
+              <p><strong>Solución:</strong> Implementamos una herramienta accesible, migramos datos y capacitamos al equipo. El resultado llevó a que nos volvieran a llamar al abrir <strong>María Vinoteca</strong> y <strong>María Club</strong>.</p>
             </div>
             <div class="case-result">
-              <div class="metric">
-                <strong>3 Espacios</strong>
-                <span>Sistemas adaptados a cada local</span>
-              </div>
-              <div class="metric">
-                <strong>Confianza</strong>
-                <span>Cliente recurrente en cada apertura</span>
-              </div>
+              <div class="metric"><strong>3 Espacios</strong><span>Sistemas adaptados a cada local</span></div>
+              <div class="metric"><strong>Confianza</strong><span>Cliente recurrente en cada apertura</span></div>
             </div>
           </article>
 
-          <!-- CASO 3: AUTOMATIZACIÓN ANALÍTICA COLAB -->
           <article class="card case-card">
             <span class="badge badge-terracotta">Datos Masivos · Automatización</span>
             <h3>Procesamiento automatizado de bases de datos (Web / FIFA)</h3>
             <div class="case-body">
-              <p><strong>Situación y Problema:</strong> Plataforma web diseñada para visualizar historiales, estadísticas y promedios por liga deportiva. El volumen de datos crudos era inmenso y actualizarlo a mano resultaba insostenible y propenso a errores.</p>
+              <p><strong>Situación y Problema:</strong> Plataforma web diseñada para visualizar historiales, estadísticas y promedios por liga deportiva. El volumen de datos crudos era inmenso y actualizarlo a mano resultaba insostenible.</p>
               <p><strong>Solución:</strong> Desarrollamos un entorno automatizado en <strong>Google Colab con Python</strong> que toma la base cruda, la limpia, procesa las métricas y deja todo listo para publicar sin fricción.</p>
             </div>
             <div class="case-result">
-              <div class="metric">
-                <strong>Alto Volumen</strong>
-                <span>Cero carga manual de registros</span>
-              </div>
-              <div class="metric">
-                <strong>Exactitud</strong>
-                <span>Actualización limpia y repetible</span>
-              </div>
+              <div class="metric"><strong>Alto Volumen</strong><span>Cero carga manual de registros</span></div>
+              <div class="metric"><strong>Exactitud</strong><span>Actualización limpia y repetible</span></div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ================= 6. QUIÉN ESTÁ DETRÁS + RESPUESTA A OBJECIONES ================= -->
+    <!-- 6. QUIÉN ESTÁ DETRÁS -->
     <section id="quien-soy" class="section-padding bg-alt">
       <div class="container profile-grid">
-        <div class="profile-img-col fade-in">
+        <div class="profile-img-col">
           <div class="profile-frame">
             <img src="foto-tomas.jpg" alt="Tomás Monserrat - Fundador de TM Consultoría" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <!-- Fallback elegante si la imagen aún no está en la carpeta -->
             <div class="profile-fallback" style="display:none;">
               <svg viewBox="0 0 120 120" width="90" height="90"><use href="#tm-isotipo"/></svg>
               <strong>Tomás Monserrat</strong>
@@ -374,16 +510,14 @@
           </div>
         </div>
 
-        <div class="profile-text fade-in">
+        <div class="profile-text">
           <span class="eyebrow">Quién está detrás</span>
           <h2>Tomás Monserrat</h2>
           <p class="lead-text">Consultor senior de procesos, ERP/WMS y automatización con más de 9 años de experiencia gestionando proyectos e implementando sistemas.</p>
           <p>Creé <strong>TM Consultoría</strong> para ser el aliado práctico que se sienta en tu mesa de trabajo, entiende el barro del día a día y trae tranquilidad y orden. Lidero personalmente cada diagnóstico e implementación, y cuando el proyecto requiere desarrollo adicional, sumo especialistas de mi red bajo mi dirección.</p>
-          
           <blockquote class="brand-quote">
             "Armar una planilla con fórmulas la arma cualquiera. Lo que yo te ofrezco, con 9 años de experiencia, es entender la lógica de tu negocio y crear un circuito que no se rompa."
           </blockquote>
-
           <div class="profile-actions">
             <a href="https://www.linkedin.com/in/tomas-monserrat-b14894125" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
               Ver trayectoria en LinkedIn →
@@ -392,9 +526,8 @@
         </div>
       </div>
 
-      <!-- Preguntas Frecuentes / Atajando Penales del Manual -->
-      <div class="container faq-container fade-in">
-        <h3 class="text-center">Preguntas frecuentes antes de arrancar</h3>
+      <div class="container faq-container">
+        <h3>Preguntas frecuentes antes de arrancar</h3>
         <div class="cards-grid cols-3">
           <div class="faq-item">
             <h4>"¿Alguien que sabe Excel no me lo hace más barato?"</h4>
@@ -412,12 +545,12 @@
       </div>
     </section>
 
-    <!-- ================= 7. CONTACTO Y DIAGNÓSTICO ================= -->
+    <!-- 7. CONTACTO -->
     <section id="auditoria" class="section-padding">
-      <div class="container audit-wrapper fade-in">
+      <div class="container audit-wrapper">
         <div class="audit-content">
           <span class="eyebrow">Hablemos de tu operación</span>
-          <h2> ¿Te sentiste identificado con alguna de estas necesidades?</h2>
+          <h2>¿Te sentiste identificado con alguna de estas necesidades?</h2>
           <p>Escribime, contame qué proceso o área te está frenando hoy y coordinamos una charla breve de diagnóstico sin cargo para analizar cómo están trabajando y ver cómo ordenarlo.</p>
           
           <div class="contact-cards">
@@ -443,22 +576,18 @@
           <form id="contactForm" class="contact-form">
             <h3>Contame sobre tu empresa</h3>
             <p class="form-helper">Completá estos 3 datos y se abrirá nuestro chat de WhatsApp con tu consulta lista.</p>
-            
             <div class="form-group">
               <label for="nombre">Tu nombre y apellido *</label>
               <input type="text" id="nombre" name="Nombre" required placeholder="Ej. Martín Gómez">
             </div>
-            
             <div class="form-group">
               <label for="empresa">Empresa y rubro *</label>
               <input type="text" id="empresa" name="Empresa" required placeholder="Ej. Distribuidora / Agro / Comercio">
             </div>
-            
             <div class="form-group">
               <label for="mensaje">¿Qué proceso o área te está quitando tiempo hoy? *</label>
               <textarea id="mensaje" name="Mensaje" rows="4" required placeholder="Ej. Perdemos mucho tiempo pasando datos a mano, queremos controlar los gastos en campo o implementar un sistema..."></textarea>
             </div>
-            
             <button type="submit" class="btn btn-primary btn-full">Enviar consulta por WhatsApp →</button>
           </form>
         </div>
@@ -466,12 +595,11 @@
     </section>
   </main>
 
-  <!-- ================= FOOTER CON LOGO EN NEGATIVO OFICIAL ================= -->
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-flex">
       <div class="footer-brand">
-        <!-- Logo Horizontal en Negativo sobre Fondo Oscuro (#3A3A3A) -->
-        <svg viewBox="0 0 430 120" width="250" height="70" style="--logo-bg: #3A3A3A; --logo-fg: #E9E3D6;" role="img" aria-label="TM Consultoría de Procesos y Automatización">
+        <svg viewBox="0 0 430 120" width="250" height="70" style="--logo-bg: #3A3A3A; --logo-fg: #E9E3D6;" role="img" aria-label="TM Consultoría">
           <use href="#tm-isotipo" x="0" y="0"/>
           <g transform="translate(124, 18)" font-family="Montserrat, sans-serif" fill="#E9E3D6">
             <text x="0" y="34" font-size="44" font-weight="800" letter-spacing="1">TM</text>
@@ -508,16 +636,13 @@
     </div>
   </footer>
 
-  <!-- Botón flotante de WhatsApp permanente -->
-  <a href="https://wa.me/5491173636508" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Escribir por WhatsApp a Tomás Monserrat">
+  <a href="https://wa.me/5491173636508" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Escribir por WhatsApp">
     <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
     <span>Hablemos</span>
   </a>
 
-  <!-- ================= SCRIPTS ================= -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Menú Móvil
       const menuBtn = document.getElementById('mobile-menu-btn');
       const nav = document.getElementById('main-navigation');
       if (menuBtn && nav) {
@@ -533,18 +658,6 @@
         });
       }
 
-      // 2. Animación suave al hacer scroll
-      const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-      // 3. Envío de formulario directo a WhatsApp
       const form = document.getElementById('contactForm');
       if (form) {
         form.addEventListener('submit', function(e) {
@@ -552,12 +665,9 @@
           const nombre = document.getElementById('nombre').value.trim();
           const empresa = document.getElementById('empresa').value.trim();
           const mensaje = document.getElementById('mensaje').value.trim();
-          
           const numero = "5491173636508";
           const texto = `Hola Tomás, soy ${nombre} (${empresa}). Vi tu web de TM Consultoría y te escribo porque necesitamos ordenar este tema en nuestra operación:\n\n"${mensaje}"`;
-          const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-          
-          window.open(url, '_blank');
+          window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, '_blank');
           form.reset();
         });
       }
