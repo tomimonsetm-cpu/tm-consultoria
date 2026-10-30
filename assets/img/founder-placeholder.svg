@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 320" role="img" aria-label="Logo de Tomás Monserrat placeholder">
+  <rect width="280" height="320" fill="#F7F4EC"/>
+  <rect x="30" y="30" width="220" height="260" rx="18" fill="#EFE9D9" stroke="#E4DEC9" stroke-width="2"/>
+  <circle cx="140" cy="110" r="58" fill="#7A8B69" opacity="0.18"/>
+  <circle cx="140" cy="106" r="46" fill="#7A8B69"/>
+  <path d="M119 87h42v36h-42zM118 140h44v14h-44zM106 160h68v16h-68z" fill="#F7F4EC" opacity="0.9"/>
+  <text x="140" y="238" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="18" font-weight="700" fill="#2F312E">TM</text>
+</svg>
